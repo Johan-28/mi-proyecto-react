@@ -2,33 +2,39 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-   overflow-x: hidden;
+  overflow-x: hidden;
   font-family: "Segoe UI", Arial, sans-serif;
   background: #050b14;
   color: #f8fafc;
 }
+
 .layout {
   display: grid;
-  grid-template-columns: 260px 1fr;
+  grid-template-columns: 220px 1fr;
   min-height: 100vh;
   width: 100%;
-  overflow-x: visible;
 }
+
 .sidebar {
   width: 220px;
-  margin-right: 0;
 }
 
 .sidebar h2 {
   color: #38bdf8;
   margin: 0;
+  text-align: center;
 }
 
 .sidebar p {
   color: #93c5fd;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .sidebar nav {
@@ -37,21 +43,26 @@ body {
   gap: 14px;
 }
 
-.sidebar nav span {
+.sidebar nav a {
   padding: 15px;
   background: #0f172a;
   border-radius: 12px;
   text-align: center;
+  color: white;
+  text-decoration: none;
+  display: block;
 }
 
-.sidebar nav span:first-child {
+.sidebar nav a:first-child,
+.sidebar nav a:hover {
   background: linear-gradient(90deg, #0ea5e9, #2563eb);
 }
 
 .main {
-  width: 100%;
-  padding: 0 20px;
+  width: 120%;
+  padding: 25px 25px 25px 25px;
 }
+
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -88,21 +99,25 @@ body {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, minmax(220px, 1fr));
-  gap: 18px;
-  margin-bottom: 24px;
-  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 29px;
+  margin-bottom: 35px;
 }
 
-.card {
+.card,
+.form-card,
+.table-card {
   background: linear-gradient(145deg, #111c2e, #172338);
   border: 1px solid #263b59;
   border-radius: 16px;
   padding: 22px;
+}
+
+.card {
   display: flex;
   align-items: center;
   gap: 16px;
-  min-height: 120px;
+  min-height: 115px;
 }
 
 .card svg {
@@ -126,18 +141,10 @@ body {
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 18px;
+   grid-template-columns: 280px minmax(700px, 1fr);
+  gap: 22px;
   align-items: start;
   width: 100%;
-}
-
-.form-card,
-.table-card {
-  background: linear-gradient(145deg, #111c2e, #172338);
-  border: 1px solid #263b59;
-  border-radius: 16px;
-  padding: 24px;
 }
 
 .form-card h2,
@@ -162,7 +169,7 @@ form button {
 input,
 select {
   width: 100%;
-  padding: 14px;
+  padding: 13px;
   border-radius: 10px;
   border: 1px solid #334155;
   background: #0f172a;
@@ -170,7 +177,7 @@ select {
 }
 
 button {
-  padding: 14px;
+  padding: 13px;
   border: none;
   border-radius: 10px;
   background: linear-gradient(90deg, #0ea5e9, #2563eb);
@@ -185,7 +192,6 @@ button {
 
 table {
   width: 100%;
-  min-width:600px;
   border-collapse: collapse;
 }
 
@@ -198,7 +204,6 @@ td {
   padding: 14px 16px;
   border-bottom: 1px solid #263b59;
   text-align: left;
-  white-space: nowrap;
 }
 
 th {
@@ -224,13 +229,6 @@ td {
   grid-column: 1 / -1;
 }
 
-.movimientos-section .table-card {
-  background: linear-gradient(145deg, #111c2e, #172338);
-  border: 1px solid #263b59;
-  border-radius: 16px;
-  padding: 24px;
-}
-
 @media (max-width: 1250px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
@@ -246,9 +244,8 @@ td {
     grid-template-columns: 1fr;
   }
 
-  .topbar {
-    flex-direction: column;
-    gap: 15px;
+  .sidebar {
+    width: 100%;
   }
 
   .cards {
@@ -258,74 +255,12 @@ td {
   form {
     grid-template-columns: 1fr;
   }
-
-  table {
-    min-width: 700px;
-  }
 }
-.main {
-  padding-left: 20px !important;
-  padding-right: 20px !important;
-  max-width: none !important;
+.table-card {
+  width: 100%;
 }
 
-.dashboard-grid {
-  grid-template-columns: 360px 1fr !important;
-}
-
-.form-card {
-  min-width: 360px;
-}
-.layout,
-.main,
-.sidebar,
-.topbar {
-  border: none !important;
-}
-
-* {
-  border-color: transparent;
-}
-
-.form-card,
-.table-card,
-.card,
-.user {
-  border: 1px solid #263b59 !important;
-}
-
-html,
-body,
-#root,
-.layout,
-.main {
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-}
-
-.layout::before,
-.layout::after,
-.main::before,
-.main::after {
-  display: none !important;
-  content: none !important;
-}
-html {
-  scroll-behavior: smooth;
-}
-
-.sidebar nav a {
-  padding: 15px;
-  background: #0f172a;
-  border-radius: 12px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  display: block;
-}
-
-.sidebar nav a:first-child,
-.sidebar nav a:hover {
-  background: linear-gradient(90deg, #0ea5e9, #2563eb);
+.table-card table {
+  width: 100%;
+  min-width: 800px;
 }
